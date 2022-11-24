@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import styles from "./index.module.scss";
 import { FaWhatsapp } from "react-icons/fa";
+import { getLanguage } from "language/current";
 
 interface IProps {
   className?: string;
@@ -13,6 +14,8 @@ export default function Header({ className = "" }: IProps) {
     window.open(redirect, "_blank");
   };
 
+	const language = getLanguage();
+
   return (
     <header
       className={classNames({
@@ -23,7 +26,7 @@ export default function Header({ className = "" }: IProps) {
       <section className={styles.info}>
         <div className={styles.info__titles}>
           <h1>Gian Barzano</h1>
-          <h2>Desenvolvimento de sistemas</h2>
+          <h2>{language.header.subtitle}</h2>
         </div>
       </section>
       <button
@@ -36,7 +39,7 @@ export default function Header({ className = "" }: IProps) {
         <i className={styles.btnContact__icon}>
           <FaWhatsapp size={20} />
         </i>
-        Entrar em contato
+        {language.header.callButton.long}
       </button>
       <button
         className={classNames({
@@ -48,7 +51,7 @@ export default function Header({ className = "" }: IProps) {
         <i className={styles.btnContact__icon}>
           <FaWhatsapp size={20} />
         </i>
-        Contato
+        {language.header.callButton.short}
       </button>
     </header>
   );
